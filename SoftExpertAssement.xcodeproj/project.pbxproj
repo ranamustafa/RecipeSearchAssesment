@@ -1,0 +1,615 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04011061268BC05B00FC89A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04011060268BC05B00FC89A1 /* AppDelegate.swift */; };
+		04011063268BC05B00FC89A1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04011062268BC05B00FC89A1 /* SceneDelegate.swift */; };
+		04011065268BC05B00FC89A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04011064268BC05B00FC89A1 /* ViewController.swift */; };
+		04011068268BC05B00FC89A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04011066268BC05B00FC89A1 /* Main.storyboard */; };
+		0401106B268BC05B00FC89A1 /* SoftExpertAssement.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04011069268BC05B00FC89A1 /* SoftExpertAssement.xcdatamodeld */; };
+		0401106D268BC05F00FC89A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0401106C268BC05F00FC89A1 /* Assets.xcassets */; };
+		04011070268BC05F00FC89A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0401106E268BC05F00FC89A1 /* LaunchScreen.storyboard */; };
+		0401107B268BC05F00FC89A1 /* SoftExpertAssementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401107A268BC05F00FC89A1 /* SoftExpertAssementTests.swift */; };
+		04011086268BC05F00FC89A1 /* SoftExpertAssementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04011085268BC05F00FC89A1 /* SoftExpertAssementUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04011077268BC05F00FC89A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04011055268BC05A00FC89A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0401105C268BC05A00FC89A1;
+			remoteInfo = SoftExpertAssement;
+		};
+		04011082268BC05F00FC89A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04011055268BC05A00FC89A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0401105C268BC05A00FC89A1;
+			remoteInfo = SoftExpertAssement;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0401105D268BC05B00FC89A1 /* SoftExpertAssement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoftExpertAssement.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04011060268BC05B00FC89A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		04011062268BC05B00FC89A1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		04011064268BC05B00FC89A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04011067268BC05B00FC89A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0401106A268BC05B00FC89A1 /* SoftExpertAssement.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SoftExpertAssement.xcdatamodel; sourceTree = "<group>"; };
+		0401106C268BC05F00FC89A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0401106F268BC05F00FC89A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04011071268BC05F00FC89A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04011076268BC05F00FC89A1 /* SoftExpertAssementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoftExpertAssementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0401107A268BC05F00FC89A1 /* SoftExpertAssementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftExpertAssementTests.swift; sourceTree = "<group>"; };
+		0401107C268BC05F00FC89A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04011081268BC05F00FC89A1 /* SoftExpertAssementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoftExpertAssementUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04011085268BC05F00FC89A1 /* SoftExpertAssementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftExpertAssementUITests.swift; sourceTree = "<group>"; };
+		04011087268BC05F00FC89A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0401105A268BC05A00FC89A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04011073268BC05F00FC89A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0401107E268BC05F00FC89A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04011054268BC05A00FC89A1 = {
+			isa = PBXGroup;
+			children = (
+				0401105F268BC05B00FC89A1 /* SoftExpertAssement */,
+				04011079268BC05F00FC89A1 /* SoftExpertAssementTests */,
+				04011084268BC05F00FC89A1 /* SoftExpertAssementUITests */,
+				0401105E268BC05B00FC89A1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0401105E268BC05B00FC89A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0401105D268BC05B00FC89A1 /* SoftExpertAssement.app */,
+				04011076268BC05F00FC89A1 /* SoftExpertAssementTests.xctest */,
+				04011081268BC05F00FC89A1 /* SoftExpertAssementUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0401105F268BC05B00FC89A1 /* SoftExpertAssement */ = {
+			isa = PBXGroup;
+			children = (
+				04011060268BC05B00FC89A1 /* AppDelegate.swift */,
+				04011062268BC05B00FC89A1 /* SceneDelegate.swift */,
+				04011064268BC05B00FC89A1 /* ViewController.swift */,
+				04011066268BC05B00FC89A1 /* Main.storyboard */,
+				0401106C268BC05F00FC89A1 /* Assets.xcassets */,
+				0401106E268BC05F00FC89A1 /* LaunchScreen.storyboard */,
+				04011071268BC05F00FC89A1 /* Info.plist */,
+				04011069268BC05B00FC89A1 /* SoftExpertAssement.xcdatamodeld */,
+			);
+			path = SoftExpertAssement;
+			sourceTree = "<group>";
+		};
+		04011079268BC05F00FC89A1 /* SoftExpertAssementTests */ = {
+			isa = PBXGroup;
+			children = (
+				0401107A268BC05F00FC89A1 /* SoftExpertAssementTests.swift */,
+				0401107C268BC05F00FC89A1 /* Info.plist */,
+			);
+			path = SoftExpertAssementTests;
+			sourceTree = "<group>";
+		};
+		04011084268BC05F00FC89A1 /* SoftExpertAssementUITests */ = {
+			isa = PBXGroup;
+			children = (
+				04011085268BC05F00FC89A1 /* SoftExpertAssementUITests.swift */,
+				04011087268BC05F00FC89A1 /* Info.plist */,
+			);
+			path = SoftExpertAssementUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0401105C268BC05A00FC89A1 /* SoftExpertAssement */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0401108A268BC05F00FC89A1 /* Build configuration list for PBXNativeTarget "SoftExpertAssement" */;
+			buildPhases = (
+				04011059268BC05A00FC89A1 /* Sources */,
+				0401105A268BC05A00FC89A1 /* Frameworks */,
+				0401105B268BC05A00FC89A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SoftExpertAssement;
+			productName = SoftExpertAssement;
+			productReference = 0401105D268BC05B00FC89A1 /* SoftExpertAssement.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04011075268BC05F00FC89A1 /* SoftExpertAssementTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0401108D268BC05F00FC89A1 /* Build configuration list for PBXNativeTarget "SoftExpertAssementTests" */;
+			buildPhases = (
+				04011072268BC05F00FC89A1 /* Sources */,
+				04011073268BC05F00FC89A1 /* Frameworks */,
+				04011074268BC05F00FC89A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04011078268BC05F00FC89A1 /* PBXTargetDependency */,
+			);
+			name = SoftExpertAssementTests;
+			productName = SoftExpertAssementTests;
+			productReference = 04011076268BC05F00FC89A1 /* SoftExpertAssementTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		04011080268BC05F00FC89A1 /* SoftExpertAssementUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04011090268BC05F00FC89A1 /* Build configuration list for PBXNativeTarget "SoftExpertAssementUITests" */;
+			buildPhases = (
+				0401107D268BC05F00FC89A1 /* Sources */,
+				0401107E268BC05F00FC89A1 /* Frameworks */,
+				0401107F268BC05F00FC89A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04011083268BC05F00FC89A1 /* PBXTargetDependency */,
+			);
+			name = SoftExpertAssementUITests;
+			productName = SoftExpertAssementUITests;
+			productReference = 04011081268BC05F00FC89A1 /* SoftExpertAssementUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04011055268BC05A00FC89A1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					0401105C268BC05A00FC89A1 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					04011075268BC05F00FC89A1 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 0401105C268BC05A00FC89A1;
+					};
+					04011080268BC05F00FC89A1 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 0401105C268BC05A00FC89A1;
+					};
+				};
+			};
+			buildConfigurationList = 04011058268BC05A00FC89A1 /* Build configuration list for PBXProject "SoftExpertAssement" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04011054268BC05A00FC89A1;
+			productRefGroup = 0401105E268BC05B00FC89A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0401105C268BC05A00FC89A1 /* SoftExpertAssement */,
+				04011075268BC05F00FC89A1 /* SoftExpertAssementTests */,
+				04011080268BC05F00FC89A1 /* SoftExpertAssementUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0401105B268BC05A00FC89A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04011070268BC05F00FC89A1 /* LaunchScreen.storyboard in Resources */,
+				0401106D268BC05F00FC89A1 /* Assets.xcassets in Resources */,
+				04011068268BC05B00FC89A1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04011074268BC05F00FC89A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0401107F268BC05F00FC89A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04011059268BC05A00FC89A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04011065268BC05B00FC89A1 /* ViewController.swift in Sources */,
+				04011061268BC05B00FC89A1 /* AppDelegate.swift in Sources */,
+				04011063268BC05B00FC89A1 /* SceneDelegate.swift in Sources */,
+				0401106B268BC05B00FC89A1 /* SoftExpertAssement.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04011072268BC05F00FC89A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0401107B268BC05F00FC89A1 /* SoftExpertAssementTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0401107D268BC05F00FC89A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04011086268BC05F00FC89A1 /* SoftExpertAssementUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04011078268BC05F00FC89A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0401105C268BC05A00FC89A1 /* SoftExpertAssement */;
+			targetProxy = 04011077268BC05F00FC89A1 /* PBXContainerItemProxy */;
+		};
+		04011083268BC05F00FC89A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0401105C268BC05A00FC89A1 /* SoftExpertAssement */;
+			targetProxy = 04011082268BC05F00FC89A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04011066268BC05B00FC89A1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04011067268BC05B00FC89A1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0401106E268BC05F00FC89A1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0401106F268BC05F00FC89A1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04011088268BC05F00FC89A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		04011089268BC05F00FC89A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0401108B268BC05F00FC89A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z7QQ9493R7;
+				INFOPLIST_FILE = SoftExpertAssement/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sa.takwen.SoftExpertAssement;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0401108C268BC05F00FC89A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z7QQ9493R7;
+				INFOPLIST_FILE = SoftExpertAssement/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sa.takwen.SoftExpertAssement;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0401108E268BC05F00FC89A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z7QQ9493R7;
+				INFOPLIST_FILE = SoftExpertAssementTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sa.takwen.SoftExpertAssementTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SoftExpertAssement.app/SoftExpertAssement";
+			};
+			name = Debug;
+		};
+		0401108F268BC05F00FC89A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z7QQ9493R7;
+				INFOPLIST_FILE = SoftExpertAssementTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sa.takwen.SoftExpertAssementTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SoftExpertAssement.app/SoftExpertAssement";
+			};
+			name = Release;
+		};
+		04011091268BC05F00FC89A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z7QQ9493R7;
+				INFOPLIST_FILE = SoftExpertAssementUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sa.takwen.SoftExpertAssementUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SoftExpertAssement;
+			};
+			name = Debug;
+		};
+		04011092268BC05F00FC89A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z7QQ9493R7;
+				INFOPLIST_FILE = SoftExpertAssementUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sa.takwen.SoftExpertAssementUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SoftExpertAssement;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04011058268BC05A00FC89A1 /* Build configuration list for PBXProject "SoftExpertAssement" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04011088268BC05F00FC89A1 /* Debug */,
+				04011089268BC05F00FC89A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0401108A268BC05F00FC89A1 /* Build configuration list for PBXNativeTarget "SoftExpertAssement" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0401108B268BC05F00FC89A1 /* Debug */,
+				0401108C268BC05F00FC89A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0401108D268BC05F00FC89A1 /* Build configuration list for PBXNativeTarget "SoftExpertAssementTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0401108E268BC05F00FC89A1 /* Debug */,
+				0401108F268BC05F00FC89A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04011090268BC05F00FC89A1 /* Build configuration list for PBXNativeTarget "SoftExpertAssementUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04011091268BC05F00FC89A1 /* Debug */,
+				04011092268BC05F00FC89A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		04011069268BC05B00FC89A1 /* SoftExpertAssement.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0401106A268BC05B00FC89A1 /* SoftExpertAssement.xcdatamodel */,
+			);
+			currentVersion = 0401106A268BC05B00FC89A1 /* SoftExpertAssement.xcdatamodel */;
+			path = SoftExpertAssement.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 04011055268BC05A00FC89A1 /* Project object */;
+}
