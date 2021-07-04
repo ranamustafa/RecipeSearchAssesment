@@ -1,0 +1,6 @@
+framework module Pods_SoftExpertAssement {
+  umbrella header "Pods-SoftExpertAssement-umbrella.h"
+
+  export *
+  module * { export * }
+}
