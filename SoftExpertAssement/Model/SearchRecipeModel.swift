@@ -13,6 +13,12 @@ struct SearchRecipeModel: Codable {
     let from, to, count: Int?
     let links: SearchRecipeModelLinks?
     let hits: [Hit]?
+    
+    enum CodingKeys: String, CodingKey {
+          case from, to, count
+          case links = "_links"
+          case hits
+      }
 
 
 }

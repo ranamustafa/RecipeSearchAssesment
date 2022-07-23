@@ -26,16 +26,15 @@ enum HelthLablesTypes: String {
 }
 
 class RecipesSearchVC: UIViewController {
-    //MARK:- Outlets
+    //MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultsTableView: UITableView!
     @IBOutlet weak var filterCollectionView: UICollectionView!
     @IBOutlet weak var noResultPlaceHolderImage: UIImageView!
-    
     @IBOutlet weak var searchForFoodLInitBL: UILabel!
-    //MARK:- Properties
+    //MARK: - Properties
     var query : String?
-    var recipesResults : [Hit]?{
+    var recipesResults : [Hit] = []{
         didSet{
 //            filteredArray = recipesResults
             resultsTableView.reloadData()
@@ -51,6 +50,17 @@ class RecipesSearchVC: UIViewController {
     var selectedCatIndexPath: IndexPath = [0,0]
     var selectedCat: HelthLablesTypes = .All
     
+    //MARK: - pagination handling
+    var nextPageUrl:String!{
+        didSet{
+            print("NEXT URL : \(String(describing: self.nextPageUrl))")
+        }
+    }
+    var pageNumber : Int?
+    var previusPageNumber : Int?
+    var remaining: Int?
+    
+    
     //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,8 +70,6 @@ class RecipesSearchVC: UIViewController {
         registerTableViewCell()
         collectionViewSetup()
         registerCollectionViewCell()
-        
-        
     }
     
     //MARK:- Helper Methods
@@ -89,43 +97,86 @@ class RecipesSearchVC: UIViewController {
     func registerTableViewCell(){
         resultsTableView.register(Constants.nips.RecipesResultsNip, forCellReuseIdentifier: Constants.ids.RecipesResultsTableViewCell)
     }
-    
-    
+
 }
 //MARK:- UITableViewDelegate, UITableViewDataSource
 
 extension RecipesSearchVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipesResults?.count ?? 0
+        return recipesResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = resultsTableView.dequeueReusableCell(withIdentifier: Constants.ids.RecipesResultsTableViewCell, for: indexPath) as? RecipesResultsTableViewCell
         cell?.selectionStyle = .none
-        cell?.configCell(recips: recipesResults?[indexPath.row])
+        cell?.configCell(recips: recipesResults[indexPath.row])
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // initiate itemVC
         let vc = AppStoryboard.Main.viewController(viewControllerClass: RecipesDetailsVC.self)// initiate items VC
-        vc.item = self.recipesResults?[indexPath.row].recipe
+        vc.item = self.recipesResults[indexPath.row].recipe
         // push to the recipe details VC
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // To handel animation of viwing the cells
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // Aimation handling
         cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
         UIView.animate(withDuration: 0.3, animations: {
             cell.layer.transform = CATransform3DMakeScale(1.05,1,1)
         },completion: { finished in
-                        UIView.animate(withDuration: 0.1, animations: {
-                            cell.layer.transform = CATransform3DMakeScale(1.05,1,1)
-                        })
+            UIView.animate(withDuration: 0.1, animations: {
+                cell.layer.transform = CATransform3DMakeScale(1.05,1,1)
+            })
         })
-        
-        
+        // pagination handling
+        if indexPath.section == 0{
+            if(indexPath.row == (self.recipesResults.count)-1){
+                if(self.pageNumber ?? 0 <= self.previusPageNumber ?? 0){
+                    if(nextPageUrl != nil){
+                        let spinner = UIActivityIndicatorView()
+                        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+                        spinner.startAnimating()
+                        tableView.tableFooterView = spinner
+                        tableView.tableFooterView?.isHidden = false
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            guard let nextURL = self.nextPageUrl  else {return}
+                            self.getRecipsByQuery(for: nextURL, showLoading: false)
+                        }
+                    }
+                    else{
+                        tableView.tableFooterView?.removeFromSuperview()
+                        let view = UIView()
+                        view.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(5))
+                        tableView.tableFooterView = view
+                        tableView.tableFooterView?.isHidden = true
+                    }
+                }
+                else{
+                    tableView.tableFooterView?.removeFromSuperview()
+                    let view = UIView()
+                    view.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(5))
+                    tableView.tableFooterView = view
+                    tableView.tableFooterView?.isHidden = true
+                }
+            }
+            else{
+                tableView.tableFooterView?.removeFromSuperview()
+                let view = UIView()
+                view.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(5))
+                tableView.tableFooterView = view
+                tableView.tableFooterView?.isHidden = true
+            }
+        }
+
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+
     }
     
 }
@@ -166,7 +217,7 @@ extension RecipesSearchVC: UICollectionViewDelegate, UICollectionViewDataSource,
         selectedCatIndexPath = indexPath
         selectedCat = healthFilterTypes[indexPath.row]
         
-        let filtered = recipesResults?.filter({ ($0.recipe?.healthLabels?.contains(selectedCat.rawValue))! })
+        let filtered = recipesResults.filter({ ($0.recipe?.healthLabels?.contains(selectedCat.rawValue))! })
 //        self.filteredArray = filtered?.isEmpty ?? false ? recipesResults : filtered
         self.filteredArray = filtered
         
@@ -186,26 +237,20 @@ extension RecipesSearchVC: UICollectionViewDelegate, UICollectionViewDataSource,
             }else{
                 DispatchQueue.main.async {
                     
-                    self.recipesResults = self.filteredArray
+                    self.recipesResults = self.filteredArray ?? []
                     self.resultsTableView.reloadData()
                 }
             }
         }
       
-       
         print("selected cat \(selectedCat.rawValue)")
         print("filtered here \(filtered)")
         print("recipe results after filtring arr \(recipesResults)")
-
-        
-        
-        
-        
     }
     // set size for each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.bounds.width - 40) / 4 // devide the collection view width to appeare only 3 celles centeralized ( -30 ) is the 5 left and 5 right edge insets and 10 minimumInteritemSpacing between cells
-        return CGSize(width: width, height: 70)
+        let width = (collectionView.bounds.width - 40) / 4  // devide the collection view width to appeare only 3 celles centeralized ( -30 ) is the 5 left and 5 right edge insets and 10 minimumInteritemSpacing between cells
+        return CGSize(width: width, height: 40)
     }
 
     // set insets between collectionview and cells
@@ -223,9 +268,18 @@ extension RecipesSearchVC: UICollectionViewDelegate, UICollectionViewDataSource,
 extension RecipesSearchVC: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    
+        
         if let searchText = searchBar.text{
+            guard searchText.isEnglishLetters(searchText) else {
+                self.popAlert(title: "Invalid", message: "Kindly check your search item in english letters only. ")
+                return
+            }
+            guard searchText.isWhiteSpace(searchText) else {
+                self.popAlert(title: "", message: "Empty spaces are not allowed")
+                return
+            }
             recipesResults = []
-//            resultsTableView.reloadData()
             let q = searchText
             self.query = q
             let url = APIs.shared.searchRecipesByWords(quary: q)
@@ -249,24 +303,21 @@ extension RecipesSearchVC{
                 
             } else {
                 DispatchQueue.main.async {
-                    self.recipesResults = data?.hits
-                    print("the recipes are \(self.recipesResults)")
-                    switch self.recipesResults?.count{
+//                    print("response here is \(data)")
+                    self.recipesResults.append(contentsOf: data?.hits ?? [])
+                    self.nextPageUrl = data?.links?.next?.href
+                    switch self.recipesResults.count{
                     case 0 :
                         self.resultsTableView.isHidden = true
                         self.searchForFoodLInitBL.isHidden = false
                         self.noResultPlaceHolderImage.isHidden = false
                         self.noResultPlaceHolderImage.image = #imageLiteral(resourceName: "sad")
-                        HUD.flash(.labeledRotatingImage(image: #imageLiteral(resourceName: "sad"), title: "No results for this recipe", subtitle: "please try another one !"), delay: 1.5)
-                        print("no recips results ")
+                        HUD.flash(.labeledError(title: "", subtitle: "No results for this recipe"), delay: 0.5)
                     default:
                         self.noResultPlaceHolderImage.isHidden = true
                         self.searchForFoodLInitBL.isHidden = true
                         self.resultsTableView.isHidden = false
-//                        self.resultsTableView.reloadData()
-                        print("the results are here ")
-//                        self.resultsTableView.reloadData()
-                        
+    
                     }
                 }
             }

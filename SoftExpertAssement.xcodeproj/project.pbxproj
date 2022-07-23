@@ -27,6 +27,7 @@
 		040110B3268BD84100FC89A1 /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040110B0268BD84100FC89A1 /* APIs.swift */; };
 		040110B4268BD84100FC89A1 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040110B1268BD84100FC89A1 /* NetworkRequest.swift */; };
 		040110B5268BD84100FC89A1 /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040110B2268BD84100FC89A1 /* WebServices.swift */; };
+		0454AE35288A991700FAE59A /* String+Extenion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AE34288A991700FAE59A /* String+Extenion.swift */; };
 		0455BED8268C1FD000C117F8 /* SearchRecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455BED7268C1FD000C117F8 /* SearchRecipeModel.swift */; };
 		0455BEDA268C2CB600C117F8 /* RecipeDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455BED9268C2CB600C117F8 /* RecipeDetailsModel.swift */; };
 		0455BEDD268D795700C117F8 /* RecipesSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455BEDC268D795700C117F8 /* RecipesSearchVC.swift */; };
@@ -84,6 +85,7 @@
 		040110B0268BD84100FC89A1 /* APIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
 		040110B1268BD84100FC89A1 /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		040110B2268BD84100FC89A1 /* WebServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
+		0454AE34288A991700FAE59A /* String+Extenion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extenion.swift"; sourceTree = "<group>"; };
 		0455BED7268C1FD000C117F8 /* SearchRecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipeModel.swift; sourceTree = "<group>"; };
 		0455BED9268C2CB600C117F8 /* RecipeDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsModel.swift; sourceTree = "<group>"; };
 		0455BEDC268D795700C117F8 /* RecipesSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesSearchVC.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				040110A5268BD7F300FC89A1 /* UITextField+Extension.swift */,
 				040110A3268BD7F300FC89A1 /* UIView+Extension.swift */,
 				040110A4268BD7F300FC89A1 /* UIViewController+Extension.swift */,
+				0454AE34288A991700FAE59A /* String+Extenion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				0455BED8268C1FD000C117F8 /* SearchRecipeModel.swift in Sources */,
 				0401106B268BC05B00FC89A1 /* SoftExpertAssement.xcdatamodeld in Sources */,
 				040110B5268BD84100FC89A1 /* WebServices.swift in Sources */,
+				0454AE35288A991700FAE59A /* String+Extenion.swift in Sources */,
 				040110A0268BD7D200FC89A1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -746,7 +750,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z7QQ9493R7;
+				DEVELOPMENT_TEAM = GJ5M6CU2KY;
 				INFOPLIST_FILE = SoftExpertAssement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -766,7 +770,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z7QQ9493R7;
+				DEVELOPMENT_TEAM = GJ5M6CU2KY;
 				INFOPLIST_FILE = SoftExpertAssement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -265,8 +265,8 @@
 		043AB874374FB38E2CD3F6A905704F65 /* ImageDrawing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDrawing.swift; path = Sources/Image/ImageDrawing.swift; sourceTree = "<group>"; };
 		04838BD351F275F8388925174BC90ADD /* MemoryStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MemoryStorage.swift; path = Sources/Cache/MemoryStorage.swift; sourceTree = "<group>"; };
 		051E117251452CFF4C5A1EB6E372AB16 /* RetryStrategy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryStrategy.swift; path = Sources/Networking/RetryStrategy.swift; sourceTree = "<group>"; };
-		05A2656F46E8CA87E77A035911B33D10 /* PKHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PKHUD.framework; path = PKHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		05C4280976BF93DA8B36818DE2E2A5E0 /* Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Cosmos.framework; path = Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		05A2656F46E8CA87E77A035911B33D10 /* PKHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PKHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		05C4280976BF93DA8B36818DE2E2A5E0 /* Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		069A3DCF0B2B8ED85B8A74D99F5DCE02 /* CosmosLocalizedRating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLocalizedRating.swift; path = Cosmos/CosmosLocalizedRating.swift; sourceTree = "<group>"; };
 		06FB11CD0C4FA4DAF77B533325C42D86 /* Kingfisher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-umbrella.h"; sourceTree = "<group>"; };
 		0723EE16C79A2251940A3CD1BBCA7015 /* AnimatedImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedImageView.swift; path = Sources/Views/AnimatedImageView.swift; sourceTree = "<group>"; };
@@ -342,7 +342,7 @@
 		5BECAB952FC649730A4879CE939A4EE2 /* ImageFormat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageFormat.swift; path = Sources/Image/ImageFormat.swift; sourceTree = "<group>"; };
 		5C9B941515AD4390C205B1C67E8F6576 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Image/Image.swift; sourceTree = "<group>"; };
 		5D457A4CE7D25E2F6CA1EC8FB54F34EC /* ImageCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = Sources/Cache/ImageCache.swift; sourceTree = "<group>"; };
-		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F9B2C8139FBBEF461569A4798A78770 /* Cosmos.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Cosmos.modulemap; sourceTree = "<group>"; };
 		60EBC342663A4859F06DEAA98F030D81 /* Pods-SoftExpertAssementTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SoftExpertAssementTests.release.xcconfig"; sourceTree = "<group>"; };
 		621BC736E1A4E14E411C6738062B2FE5 /* String+MD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+MD5.swift"; path = "Sources/Utility/String+MD5.swift"; sourceTree = "<group>"; };
@@ -376,7 +376,7 @@
 		79C7970BA0FCB20538AF3049B8CB48C4 /* IQKeyboardManagerConstantsInternal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstantsInternal.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstantsInternal.swift; sourceTree = "<group>"; };
 		7A05625653682AF1F5C3903CEA7D513C /* ImageTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageTransition.swift; path = Sources/Image/ImageTransition.swift; sourceTree = "<group>"; };
 		7AB81728D96C62DF9C339DF93428677F /* FormatIndicatedCacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormatIndicatedCacheSerializer.swift; path = Sources/Cache/FormatIndicatedCacheSerializer.swift; sourceTree = "<group>"; };
-		7B32357F068CC5D4E0099E0C379C25DA /* Pods_SoftExpertAssementTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SoftExpertAssementTests.framework; path = "Pods-SoftExpertAssementTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B32357F068CC5D4E0099E0C379C25DA /* Pods_SoftExpertAssementTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoftExpertAssementTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E04D2C9583A61B956B7020C2BCA73E3 /* AlamofireExtended.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlamofireExtended.swift; path = Source/AlamofireExtended.swift; sourceTree = "<group>"; };
 		7F4F701BBFD5275BC0984608D400AA25 /* RightToLeft.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RightToLeft.swift; path = Cosmos/Helpers/RightToLeft.swift; sourceTree = "<group>"; };
 		80812266F7B66404C6A9DAF00BB2C29A /* DiskStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiskStorage.swift; path = Sources/Cache/DiskStorage.swift; sourceTree = "<group>"; };
@@ -387,7 +387,7 @@
 		86399F8EDBEED7A792E6336CC7FA7BCF /* EventMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EventMonitor.swift; path = Source/EventMonitor.swift; sourceTree = "<group>"; };
 		86E7431A33E2ED31C56C93DF8E5B1AB8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		88990471C23F24145746AE567691D1DB /* PKHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PKHUD-prefix.pch"; sourceTree = "<group>"; };
-		892D9566C5CE186FBCC5AD6431D6389B /* Pods_SoftExpertAssement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SoftExpertAssement.framework; path = "Pods-SoftExpertAssement.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		892D9566C5CE186FBCC5AD6431D6389B /* Pods_SoftExpertAssement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoftExpertAssement.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8967884CCE740BA745982F30C793BAEA /* Cosmos-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cosmos-umbrella.h"; sourceTree = "<group>"; };
 		8A403A62AD9C48CD02FC5DD0B65A4600 /* Delegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Delegate.swift; path = Sources/Utility/Delegate.swift; sourceTree = "<group>"; };
 		8BB78AED4261EDA41C0C539A9963F222 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
@@ -405,7 +405,7 @@
 		9AB75F107ACD0CC7D4BB9851E2EA0879 /* ImagePrefetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImagePrefetcher.swift; path = Sources/Networking/ImagePrefetcher.swift; sourceTree = "<group>"; };
 		9BC669516509F36898EEC7B1A71CD724 /* PKHUDTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDTextView.swift; path = PKHUD/PKHUDTextView.swift; sourceTree = "<group>"; };
 		9CDF3DB2D2A468940DC85C0045C4C8FA /* Pods-SoftExpertAssement-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SoftExpertAssement-umbrella.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E9C61A289C0370534D86AF51E9ECCAB /* Kingfisher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.release.xcconfig; sourceTree = "<group>"; };
 		9FB18F49541120ADD3A15A602019DEE1 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		A2B6A1874B7B5323EA6A8F89C6A7226C /* Cosmos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Cosmos.debug.xcconfig; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 		A5DC4933CD61ABCDDA1F36877AD8F7D1 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		A674D726189051D9E24B32F274B9B1C2 /* ImageDataProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDataProcessor.swift; path = Sources/Networking/ImageDataProcessor.swift; sourceTree = "<group>"; };
 		A8707EF5B061331800940F549C24E58E /* Window.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Window.swift; path = PKHUD/Window.swift; sourceTree = "<group>"; };
-		A8E950A16D00F649C54FFB30F81D7842 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IQKeyboardManagerSwift.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8E950A16D00F649C54FFB30F81D7842 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A911BFDF9262FEFFCF4B3E7104852AD2 /* CosmosTouchTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosTouchTarget.swift; path = Cosmos/Helpers/CosmosTouchTarget.swift; sourceTree = "<group>"; };
 		A9DED65E9E1A25FDAF6C1E9382BA4BF7 /* HTTPHeaders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHeaders.swift; path = Source/HTTPHeaders.swift; sourceTree = "<group>"; };
 		AB1A4CEC3D51079FB345ED70ACBCFBDC /* Pods-SoftExpertAssement-SoftExpertAssementUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SoftExpertAssement-SoftExpertAssementUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -431,9 +431,9 @@
 		BB22ABD923738A0E236152F17BB42EBF /* Pods-SoftExpertAssement-SoftExpertAssementUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SoftExpertAssement-SoftExpertAssementUITests.modulemap"; sourceTree = "<group>"; };
 		BE9B70F2997B54BBCB0E7E258CCA59D3 /* CosmosLayerHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLayerHelper.swift; path = Cosmos/CosmosLayerHelper.swift; sourceTree = "<group>"; };
 		BF904BB50C95DEE76AC1C8D2B41BA5BA /* Pods-SoftExpertAssement-SoftExpertAssementUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SoftExpertAssement-SoftExpertAssementUITests-umbrella.h"; sourceTree = "<group>"; };
-		BFCB2D5C605270A32522299AED3B5AE6 /* PKHUDResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PKHUDResources.bundle; path = "PKHUD-PKHUDResources.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFCB2D5C605270A32522299AED3B5AE6 /* PKHUDResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PKHUDResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C025DD13818A1BB343B2D881E1BD2B6D /* IQKeyboardManagerConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstants.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstants.swift; sourceTree = "<group>"; };
-		C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C424CBD8793046E94700A92191A65544 /* ExtensionHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtensionHelpers.swift; path = Sources/Utility/ExtensionHelpers.swift; sourceTree = "<group>"; };
 		C477CA29EB0CF10CC2B0729907B7169E /* IQUIViewController+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIViewController+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIViewController+Additions.swift"; sourceTree = "<group>"; };
 		C75F8A657B7DB0FBD5F299F71177838E /* PKHUD-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PKHUD-Info.plist"; sourceTree = "<group>"; };
@@ -442,7 +442,7 @@
 		CB8AD31DE5283DE8A6AF0B8876AE9E96 /* Alamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.release.xcconfig; sourceTree = "<group>"; };
 		CC1295153C2585E76152B4E2762B0AFA /* Pods-SoftExpertAssementTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SoftExpertAssementTests-umbrella.h"; sourceTree = "<group>"; };
 		CE9288484F0E30446B6A0B2582775A8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		CEF10F21A02D18234341CE7A36CDD065 /* Pods_SoftExpertAssement_SoftExpertAssementUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SoftExpertAssement_SoftExpertAssementUITests.framework; path = "Pods-SoftExpertAssement-SoftExpertAssementUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEF10F21A02D18234341CE7A36CDD065 /* Pods_SoftExpertAssement_SoftExpertAssementUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoftExpertAssement_SoftExpertAssementUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D04D9D86759D8D322BF27D8CCFA44184 /* Deprecated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Deprecated.swift; path = Sources/General/Deprecated.swift; sourceTree = "<group>"; };
 		D479F789622C032E5EDF3B4176E6C51F /* CosmosAccessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosAccessibility.swift; path = Cosmos/CosmosAccessibility.swift; sourceTree = "<group>"; };
 		D4F66D71602C020F1F146BE67F1FB0DD /* IQKeyboardManagerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = IQKeyboardManagerSwift.modulemap; sourceTree = "<group>"; };
@@ -660,7 +660,6 @@
 				C477CA29EB0CF10CC2B0729907B7169E /* IQUIViewController+Additions.swift */,
 				79F924EE5E1859D48134058A5E6BE77A /* Support Files */,
 			);
-			name = IQKeyboardManagerSwift;
 			path = IQKeyboardManagerSwift;
 			sourceTree = "<group>";
 		};
@@ -759,7 +758,6 @@
 				ADED5362583F42E6680F32F8E8A30C3A /* StarLayer.swift */,
 				2300F6B98CBB9B2F0F4E8B0C441D0F1F /* Support Files */,
 			);
-			name = Cosmos;
 			path = Cosmos;
 			sourceTree = "<group>";
 		};
@@ -835,7 +833,6 @@
 				18062F7496D1AEE4A03C7736CB30E734 /* Core */,
 				2B076E0BB70BF337D0FEB3629B7A94CA /* Support Files */,
 			);
-			name = Kingfisher;
 			path = Kingfisher;
 			sourceTree = "<group>";
 		};
@@ -897,7 +894,6 @@
 				777E733EA722E20D421E3AD6F2417B51 /* Resources */,
 				43C13D616AD01109E3006BCFDC1D65BE /* Support Files */,
 			);
-			name = PKHUD;
 			path = PKHUD;
 			sourceTree = "<group>";
 		};
@@ -941,7 +937,6 @@
 				E476A316B2F2EF915CD13C0834495D65 /* Validation.swift */,
 				523EFE2982B220B7E167BFF72415073A /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1679,6 +1674,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PKHUD";
+				DEVELOPMENT_TEAM = GJ5M6CU2KY;
 				IBSC_MODULE = PKHUD;
 				INFOPLIST_FILE = "Target Support Files/PKHUD/ResourceBundle-PKHUDResources-PKHUD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2274,6 +2270,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PKHUD";
+				DEVELOPMENT_TEAM = GJ5M6CU2KY;
 				IBSC_MODULE = PKHUD;
 				INFOPLIST_FILE = "Target Support Files/PKHUD/ResourceBundle-PKHUDResources-PKHUD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

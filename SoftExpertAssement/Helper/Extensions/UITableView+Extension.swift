@@ -26,3 +26,15 @@ extension UITableView {
     }
         
 }
+
+extension UITableView {
+    func addSpinnerFooter() {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 200))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        spinner.color = .lightGray
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        self.tableFooterView = footerView
+    }
+}

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W8a-u5-Zty">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W8a-u5-Zty">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20019"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -124,36 +125,39 @@
                                     <constraint firstAttribute="height" constant="300" id="i0l-1R-oRZ"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="quk-OW-abx">
-                                <rect key="frame" x="10" y="364" width="394" height="79"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="quk-OW-abx">
+                                <rect key="frame" x="10" y="364" width="394" height="451"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAk-pq-7VY">
-                                        <rect key="frame" x="0.0" y="0.0" width="99" height="23"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAk-pq-7VY">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="207"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <color key="textColor" red="0.15700579245654017" green="0.54210173617638935" blue="0.36235225755958472" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe ingredients each on a separate line. “ingredientLines”" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CK3-Sd-qJm">
-                                        <rect key="frame" x="0.0" y="43" width="297.5" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <rect key="frame" x="0.0" y="210" width="394" height="241"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezl-IG-Rwx">
-                                <rect key="frame" x="15" y="772" width="384" height="60"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <rect key="frame" x="70" y="817" width="274" height="35"/>
+                                <color key="backgroundColor" red="0.1764705882352941" green="0.49803921568627452" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="q1Y-CX-SKl"/>
+                                    <constraint firstAttribute="height" constant="35" id="q1Y-CX-SKl"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Recipe Website">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -165,14 +169,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Cze-Tx-SZS" firstAttribute="trailing" secondItem="J4c-XK-2ve" secondAttribute="trailing" id="3uh-yT-zHb"/>
-                            <constraint firstItem="Ezl-IG-Rwx" firstAttribute="leading" secondItem="Cze-Tx-SZS" secondAttribute="leading" constant="15" id="ATI-gc-q4j"/>
+                            <constraint firstItem="Ezl-IG-Rwx" firstAttribute="leading" secondItem="Cze-Tx-SZS" secondAttribute="leading" constant="70" id="ATI-gc-q4j"/>
                             <constraint firstItem="J4c-XK-2ve" firstAttribute="leading" secondItem="Cze-Tx-SZS" secondAttribute="leading" id="Mvk-A5-Ido"/>
-                            <constraint firstItem="Cze-Tx-SZS" firstAttribute="trailing" secondItem="Ezl-IG-Rwx" secondAttribute="trailing" constant="15" id="Phm-Br-UHZ"/>
+                            <constraint firstItem="Cze-Tx-SZS" firstAttribute="trailing" secondItem="Ezl-IG-Rwx" secondAttribute="trailing" constant="70" id="Phm-Br-UHZ"/>
                             <constraint firstItem="J4c-XK-2ve" firstAttribute="top" secondItem="Cze-Tx-SZS" secondAttribute="top" id="Q2U-5y-8j8"/>
                             <constraint firstItem="quk-OW-abx" firstAttribute="top" secondItem="J4c-XK-2ve" secondAttribute="bottom" constant="20" id="QnC-73-MY8"/>
                             <constraint firstItem="quk-OW-abx" firstAttribute="leading" secondItem="Cze-Tx-SZS" secondAttribute="leading" constant="10" id="Usa-HR-dr4"/>
                             <constraint firstItem="Cze-Tx-SZS" firstAttribute="trailing" secondItem="quk-OW-abx" secondAttribute="trailing" constant="10" id="Wr4-8h-U4i"/>
-                            <constraint firstItem="Cze-Tx-SZS" firstAttribute="bottom" secondItem="Ezl-IG-Rwx" secondAttribute="bottom" constant="30" id="fsw-av-9vT"/>
+                            <constraint firstItem="Cze-Tx-SZS" firstAttribute="bottom" secondItem="Ezl-IG-Rwx" secondAttribute="bottom" constant="10" id="fsw-av-9vT"/>
+                            <constraint firstItem="Ezl-IG-Rwx" firstAttribute="top" secondItem="quk-OW-abx" secondAttribute="bottom" constant="2" id="vI2-ux-DUd"/>
                         </constraints>
                     </view>
                     <connections>
@@ -207,9 +212,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
