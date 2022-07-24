@@ -50,7 +50,7 @@ class RecipesSearchVC: UIViewController {
     let healthFilterTypes: [HelthLablesTypes] = [.All, .Low_Sugar, .Keto, .Vegan]
     var selectedCatIndexPath: IndexPath = [0,0]
     var selectedCat: HelthLablesTypes = .All
-    var isFilterd: Bool = false
+//    var isFilterd: Bool = false
     
     //MARK: - pagination handling
     var nextPageUrl:String!{
@@ -119,22 +119,22 @@ class RecipesSearchVC: UIViewController {
 
 extension RecipesSearchVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFilterd{
-            return filteredArray.count
-        }else{
+//        if isFilterd{
+//            return filteredArray.count
+//        }else{
             
             return recipesResults.count
-        }
+//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = resultsTableView.dequeueReusableCell(withIdentifier: Constants.ids.RecipesResultsTableViewCell, for: indexPath) as? RecipesResultsTableViewCell
         cell?.selectionStyle = .none
-        if isFilterd{
-            cell?.configCell(recips: filteredArray[indexPath.row])
-        }else{
+//        if isFilterd{
+//            cell?.configCell(recips: filteredArray[indexPath.row])
+//        }else{
             cell?.configCell(recips: recipesResults[indexPath.row])
-        }
+//        }
         return cell ?? UITableViewCell()
     }
     
@@ -243,37 +243,33 @@ extension RecipesSearchVC: UICollectionViewDelegate, UICollectionViewDataSource,
         selectedCat = healthFilterTypes[indexPath.row]
         print("selected category \(selectedCat.rawValue)")
 
-        let filtered = recipesResults.filter({ ($0.recipe?.healthLabels?.contains(selectedCat.rawValue))! })
-//        self.filteredArray = filtered
-      
-       
-
+//        let filtered = recipesResults.filter({ ($0.recipe?.healthLabels?.contains(selectedCat.rawValue))! })
+        
         switch selectedCat{
         case .All:
+            self.recipesResults.removeAll()
             let url = APIs.shared.searchRecipesByWords(quary: self.query ?? "")
-//            getRecipsByQuery(for: url, showLoading: true)
-            self.isFilterd = false
-//            self.resultsTableView.reloadData()
+            getRecipsByQuery(for: url, showLoading: true)
             self.checkIfNoResults(recipesResults)
+            
         case .Low_Sugar:
-            self.isFilterd = true
-//            let url
+            self.recipesResults.removeAll()
+            let url = APIs.shared.searchRecipesByHealth(quary: self.query ?? "", health: "low-sugar")
+            getRecipsByQuery(for: url, showLoading: true)
+            self.checkIfNoResults(recipesResults)
             
-            
-            
-//            filteredArray.removeAll()
-//            filteredArray.append(contentsOf: filtered)
-//            self.checkIfNoResults(filteredArray)
         case .Keto:
-            self.isFilterd = true
-            filteredArray.removeAll()
-            filteredArray.append(contentsOf: filtered)
-            self.checkIfNoResults(filteredArray)
+            self.recipesResults.removeAll()
+            let url = APIs.shared.searchRecipesByHealth(quary: self.query ?? "", health: "keto-friendly")
+            getRecipsByQuery(for: url, showLoading: true)
+            self.checkIfNoResults(recipesResults)
+
         case .Vegan:
-            self.isFilterd = true
-            filteredArray.removeAll()
-            filteredArray.append(contentsOf: filtered)
-            self.checkIfNoResults(filteredArray)
+            self.recipesResults.removeAll()
+            let url = APIs.shared.searchRecipesByHealth(quary: self.query ?? "", health: "vegan")
+            getRecipsByQuery(for: url, showLoading: true)
+            self.checkIfNoResults(recipesResults)
+
         }
     }
     // set size for each cell
@@ -327,6 +323,7 @@ extension RecipesSearchVC{
                 print("Connection failed")
                 
             } else if error != nil {
+                print("the error is : \(error)")
                 HUD.flash(.labeledError(title: "", subtitle: error), delay: 0.5)
                 
             } else {
