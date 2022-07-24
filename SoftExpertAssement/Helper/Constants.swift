@@ -7,12 +7,11 @@
 
 import Foundation
 import UIKit
+
 struct Constants {
     static var colors = Colors()
     static var nips = Nips()
     static var ids = IDs()
-    
-   
 }
 
 struct Colors {
@@ -31,6 +30,10 @@ struct IDs {
     var FilterCollectionViewCell = "FilterCollectionViewCell"
     var CartTableViewCell = "CartTableViewCell"
     var ChooseTableViewCell = "ChooseTableViewCell"
-    
 }
-
+enum HelthLablesTypes: String {
+    case All
+    case Low_Sugar = "Low Sugar"
+    case Keto
+    case Vegan
+}

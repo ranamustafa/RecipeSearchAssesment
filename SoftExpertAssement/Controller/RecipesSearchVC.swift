@@ -18,13 +18,6 @@
 import UIKit
 import PKHUD
 
-enum HelthLablesTypes: String {
-    case All
-    case Low_Sugar = "Low Sugar"
-    case Keto
-    case Vegan
-}
-
 class RecipesSearchVC: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
@@ -32,17 +25,11 @@ class RecipesSearchVC: UIViewController {
     @IBOutlet weak var filterCollectionView: UICollectionView!
     @IBOutlet weak var noResultPlaceHolderImage: UIImageView!
     @IBOutlet weak var searchForFoodLInitBL: UILabel!
+    
     //MARK: - Properties
     var query : String?
     var recipesResults : [Hit] = []{
         didSet{
-//            filteredArray = recipesResults
-            resultsTableView.reloadData()
-        }
-    }
-    var filteredArray: [Hit] = [] {
-        didSet{
-            print("Filterd Array !!! \(self.filteredArray)")
             resultsTableView.reloadData()
         }
     }
@@ -50,20 +37,14 @@ class RecipesSearchVC: UIViewController {
     let healthFilterTypes: [HelthLablesTypes] = [.All, .Low_Sugar, .Keto, .Vegan]
     var selectedCatIndexPath: IndexPath = [0,0]
     var selectedCat: HelthLablesTypes = .All
-//    var isFilterd: Bool = false
     
     //MARK: - pagination handling
-    var nextPageUrl:String!{
-        didSet{
-            print("NEXT URL : \(String(describing: self.nextPageUrl))")
-        }
-    }
+    var nextPageUrl:String!
     var pageNumber : Int?
     var previusPageNumber : Int?
     var remaining: Int?
     
-    
-    //MARK:- LifeCycle
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         screenInitDesign()
@@ -115,38 +96,26 @@ class RecipesSearchVC: UIViewController {
     }
 
 }
-//MARK:- UITableViewDelegate, UITableViewDataSource
+//MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension RecipesSearchVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if isFilterd{
-//            return filteredArray.count
-//        }else{
-            
             return recipesResults.count
-//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = resultsTableView.dequeueReusableCell(withIdentifier: Constants.ids.RecipesResultsTableViewCell, for: indexPath) as? RecipesResultsTableViewCell
         cell?.selectionStyle = .none
-//        if isFilterd{
-//            cell?.configCell(recips: filteredArray[indexPath.row])
-//        }else{
-            cell?.configCell(recips: recipesResults[indexPath.row])
-//        }
+        cell?.configCell(recips: recipesResults[indexPath.row])
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // initiate itemVC
-        let vc = AppStoryboard.Main.viewController(viewControllerClass: RecipesDetailsVC.self)// initiate items VC
+        let vc = AppStoryboard.Main.viewController(viewControllerClass: RecipesDetailsVC.self)
         vc.item = self.recipesResults[indexPath.row].recipe
-        // push to the recipe details VC
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    // To handel animation of viwing the cells
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // Aimation handling
         cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
@@ -215,33 +184,21 @@ extension RecipesSearchVC: UICollectionViewDelegate, UICollectionViewDataSource,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: Constants.ids.FilterCollectionViewCell, for: indexPath) as? FilterCollectionViewCell
-        // ternary operator to set cell background color according to selected category indexpath
         cell?.backgroundColor = (selectedCatIndexPath == indexPath) ? Constants.colors.selectedColor : Constants.colors.unSelectedColor
-        
-        cell?.filterTitleLBL.text = healthFilterTitles[healthFilterTypes[indexPath.row]] // set filter title for cell label
-        
-        
+        cell?.filterTitleLBL.text = healthFilterTitles[healthFilterTypes[indexPath.row]]
             return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if self.resultsTableView.numberOfRows(inSection: 0) > 0 { // checl if there is rows in tableview
-            self.resultsTableView.scrollToRow(at: [0,0], at: .top, animated: true) // scroll tableview to the top
+        if self.resultsTableView.numberOfRows(inSection: 0) > 0 {
+            self.resultsTableView.scrollToRow(at: [0,0], at: .top, animated: true)
         }
-        // refrence to previously selected cell
         let previouslySelectedCell = collectionView.cellForItem(at: selectedCatIndexPath) as! FilterCollectionViewCell
-        // set background color of previously selected cell
         previouslySelectedCell.backgroundColor = Constants.colors.unSelectedColor
-        
-        // refrence to new selected cell
         let newSelectedCell = collectionView.cellForItem(at: indexPath) as! FilterCollectionViewCell
-        // set background color of new selected cell
         newSelectedCell.backgroundColor = Constants.colors.selectedColor
-        
         selectedCatIndexPath = indexPath
         selectedCat = healthFilterTypes[indexPath.row]
-
-        
         switch selectedCat{
         case .All:
             self.recipesResults.removeAll()
@@ -249,46 +206,38 @@ extension RecipesSearchVC: UICollectionViewDelegate, UICollectionViewDataSource,
             HUD.show(.progress, onView: self.view)
             getRecipsByQuery(for: url, showLoading: true)
             self.checkIfNoResults(recipesResults)
-            
         case .Low_Sugar:
             self.recipesResults.removeAll()
             let url = APIs.shared.searchRecipesByHealth(quary: self.query ?? "", health: "low-sugar")
             HUD.show(.progress, onView: self.view)
             getRecipsByQuery(for: url, showLoading: true)
             self.checkIfNoResults(recipesResults)
-            
         case .Keto:
             self.recipesResults.removeAll()
             let url = APIs.shared.searchRecipesByHealth(quary: self.query ?? "", health: "keto-friendly")
             HUD.show(.progress, onView: self.view)
             getRecipsByQuery(for: url, showLoading: true)
             self.checkIfNoResults(recipesResults)
-
         case .Vegan:
             self.recipesResults.removeAll()
             let url = APIs.shared.searchRecipesByHealth(quary: self.query ?? "", health: "vegan")
             HUD.show(.progress, onView: self.view)
             getRecipsByQuery(for: url, showLoading: true)
             self.checkIfNoResults(recipesResults)
-
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width - 40) / 4
         return CGSize(width: width, height: 40)
     }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
     }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
-
-    
 }
-//MARK:- SearchBar Delegates
+//MARK: - SearchBar Delegates
 extension RecipesSearchVC: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -307,8 +256,6 @@ extension RecipesSearchVC: UISearchBarDelegate{
             let url = APIs.shared.searchRecipesByWords(quary: q)
             HUD.show(.progress, onView: self.view)
             getRecipsByQuery(for: url, showLoading: true)
-            
-            
         }
     }
 }
