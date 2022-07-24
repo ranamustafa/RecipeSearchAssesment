@@ -238,54 +238,52 @@ extension RecipesSearchVC: UICollectionViewDelegate, UICollectionViewDataSource,
         // set background color of new selected cell
         newSelectedCell.backgroundColor = Constants.colors.selectedColor
         
-        // set selectedCat variable to selected indexpath
         selectedCatIndexPath = indexPath
         selectedCat = healthFilterTypes[indexPath.row]
-        print("selected category \(selectedCat.rawValue)")
 
-//        let filtered = recipesResults.filter({ ($0.recipe?.healthLabels?.contains(selectedCat.rawValue))! })
         
         switch selectedCat{
         case .All:
             self.recipesResults.removeAll()
             let url = APIs.shared.searchRecipesByWords(quary: self.query ?? "")
+            HUD.show(.progress, onView: self.view)
             getRecipsByQuery(for: url, showLoading: true)
             self.checkIfNoResults(recipesResults)
             
         case .Low_Sugar:
             self.recipesResults.removeAll()
             let url = APIs.shared.searchRecipesByHealth(quary: self.query ?? "", health: "low-sugar")
+            HUD.show(.progress, onView: self.view)
             getRecipsByQuery(for: url, showLoading: true)
             self.checkIfNoResults(recipesResults)
             
         case .Keto:
             self.recipesResults.removeAll()
             let url = APIs.shared.searchRecipesByHealth(quary: self.query ?? "", health: "keto-friendly")
+            HUD.show(.progress, onView: self.view)
             getRecipsByQuery(for: url, showLoading: true)
             self.checkIfNoResults(recipesResults)
 
         case .Vegan:
             self.recipesResults.removeAll()
             let url = APIs.shared.searchRecipesByHealth(quary: self.query ?? "", health: "vegan")
+            HUD.show(.progress, onView: self.view)
             getRecipsByQuery(for: url, showLoading: true)
             self.checkIfNoResults(recipesResults)
 
         }
     }
-    // set size for each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.bounds.width - 40) / 4  // devide the collection view width to appeare only 3 celles centeralized ( -30 ) is the 5 left and 5 right edge insets and 10 minimumInteritemSpacing between cells
+        let width = (collectionView.bounds.width - 40) / 4
         return CGSize(width: width, height: 40)
     }
 
-    // set insets between collectionview and cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5) // conserns about the spacing between the right and left edges
+        return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
     }
 
-    // set interitem spacing
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10 // spacing between cells
+        return 10
     }
 
     
@@ -307,6 +305,7 @@ extension RecipesSearchVC: UISearchBarDelegate{
             let q = searchText
             self.query = q
             let url = APIs.shared.searchRecipesByWords(quary: q)
+            HUD.show(.progress, onView: self.view)
             getRecipsByQuery(for: url, showLoading: true)
             
             
@@ -316,35 +315,21 @@ extension RecipesSearchVC: UISearchBarDelegate{
 
 //MARK: - Networking
 extension RecipesSearchVC{
-    func getRecipsByQuery(for url: String, showLoading: Bool) {
-        
-        WebServices.getRecipes(vc: self, showLoading: showLoading, url: url) { (data, error) in
-            if error == nil && data == nil {
-                print("Connection failed")
-                
-            } else if error != nil {
-                print("the error is : \(error)")
-                HUD.flash(.labeledError(title: "", subtitle: error), delay: 0.5)
-                
-            } else {
-                DispatchQueue.main.async {
-                    self.recipesResults.append(contentsOf: data?.hits ?? [])
-                    self.nextPageUrl = data?.links?.next?.href
-                    switch self.recipesResults.count{
-                    case 0 :
-                        self.resultsTableView.isHidden = true
-                        self.searchForFoodLInitBL.isHidden = false
-                        self.noResultPlaceHolderImage.isHidden = false
-                        self.noResultPlaceHolderImage.image = #imageLiteral(resourceName: "sad")
-                        HUD.flash(.labeledError(title: "", subtitle: "No results for this recipe"), delay: 0.5)
-                    default:
-                        self.noResultPlaceHolderImage.isHidden = true
-                        self.searchForFoodLInitBL.isHidden = true
-                        self.resultsTableView.isHidden = false
-    
-                    }
-                }
+    func getRecipsByQuery(for url: String, showLoading: Bool){
+        NetworkManager.shared.fetchAllProducts(url: url) { [weak self] products, error in
+            guard let strongSelf = self else {return}
+            HUD.hide()
+            guard let response = products else {
+                strongSelf.popAlert(title: "", message: error ?? "")
+                return
             }
+            guard let resultProducts = response.hits else {
+                strongSelf.popAlert(title: "", message: error ?? "")
+                return
+            }
+            strongSelf.recipesResults.append(contentsOf: resultProducts)
+            strongSelf.nextPageUrl = response.links?.next?.href
+            strongSelf.checkIfNoResults(strongSelf.recipesResults)
         }
     }
 }
