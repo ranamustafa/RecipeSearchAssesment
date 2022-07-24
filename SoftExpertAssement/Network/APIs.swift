@@ -27,7 +27,9 @@ struct APIs {
     func recipesDetails(id:String) -> String{
         return endPoint + "/\(id)?type=public" + sharedAppInfo
     }
-
+    func searchRecipesByHealth(quary: String, health:String)-> String{
+        return endPoint + "?type=public&q=\(quary)" + sharedAppInfo + "&health=\(health)"
+    }
    
     
     

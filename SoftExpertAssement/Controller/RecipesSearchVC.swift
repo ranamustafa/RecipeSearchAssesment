@@ -40,8 +40,9 @@ class RecipesSearchVC: UIViewController {
             resultsTableView.reloadData()
         }
     }
-    var filteredArray: [Hit]? {
+    var filteredArray: [Hit] = [] {
         didSet{
+            print("Filterd Array !!! \(self.filteredArray)")
             resultsTableView.reloadData()
         }
     }
@@ -49,6 +50,7 @@ class RecipesSearchVC: UIViewController {
     let healthFilterTypes: [HelthLablesTypes] = [.All, .Low_Sugar, .Keto, .Vegan]
     var selectedCatIndexPath: IndexPath = [0,0]
     var selectedCat: HelthLablesTypes = .All
+    var isFilterd: Bool = false
     
     //MARK: - pagination handling
     var nextPageUrl:String!{
@@ -72,30 +74,44 @@ class RecipesSearchVC: UIViewController {
         registerCollectionViewCell()
     }
     
-    //MARK:- Helper Methods
-    func screenInitDesign(){
+    //MARK: - Helper Methods
+    private func screenInitDesign(){
         self.resultsTableView.isHidden = true
         self.noResultPlaceHolderImage.isHidden = false
         self.noResultPlaceHolderImage.image = #imageLiteral(resourceName: "what")
         self.searchForFoodLInitBL.isHidden = false
     }
-    func searchBarSetup(){
+    private func searchBarSetup(){
         searchBar.delegate = self
         searchBar.placeholder = "search for recipe"
     }
-    func collectionViewSetup(){
+    private func collectionViewSetup(){
         filterCollectionView.dataSource = self
         filterCollectionView.delegate = self
     }
-    func registerCollectionViewCell(){
+    private func registerCollectionViewCell(){
         filterCollectionView.register(Constants.nips.FilterNip, forCellWithReuseIdentifier: Constants.ids.FilterCollectionViewCell)
     }
-    func tableViewSetup(){
+    private func tableViewSetup(){
         resultsTableView.dataSource = self
         resultsTableView.delegate = self
     }
-    func registerTableViewCell(){
+    private func registerTableViewCell(){
         resultsTableView.register(Constants.nips.RecipesResultsNip, forCellReuseIdentifier: Constants.ids.RecipesResultsTableViewCell)
+    }
+    private func checkIfNoResults(_ array: [Hit]){
+        if array.isEmpty{
+            self.resultsTableView.isHidden = true
+            self.searchForFoodLInitBL.isHidden = false
+            self.searchForFoodLInitBL.text = "No results for this option"
+            self.noResultPlaceHolderImage.isHidden = false
+            self.noResultPlaceHolderImage.image = #imageLiteral(resourceName: "sad")
+        }else{
+            self.resultsTableView.isHidden = false
+            self.searchForFoodLInitBL.isHidden = true
+            self.noResultPlaceHolderImage.isHidden = true
+            self.resultsTableView.reloadData()
+        }
     }
 
 }
@@ -103,13 +119,22 @@ class RecipesSearchVC: UIViewController {
 
 extension RecipesSearchVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipesResults.count
+        if isFilterd{
+            return filteredArray.count
+        }else{
+            
+            return recipesResults.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = resultsTableView.dequeueReusableCell(withIdentifier: Constants.ids.RecipesResultsTableViewCell, for: indexPath) as? RecipesResultsTableViewCell
         cell?.selectionStyle = .none
-        cell?.configCell(recips: recipesResults[indexPath.row])
+        if isFilterd{
+            cell?.configCell(recips: filteredArray[indexPath.row])
+        }else{
+            cell?.configCell(recips: recipesResults[indexPath.row])
+        }
         return cell ?? UITableViewCell()
     }
     
@@ -181,7 +206,7 @@ extension RecipesSearchVC: UITableViewDataSource, UITableViewDelegate{
     
 }
 
-//MARK:- UICollectionViewelegate, UICollectionViewDataSource
+//MARK: - UICollectionViewelegate, UICollectionViewDataSource
 
 extension RecipesSearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -216,36 +241,40 @@ extension RecipesSearchVC: UICollectionViewDelegate, UICollectionViewDataSource,
         // set selectedCat variable to selected indexpath
         selectedCatIndexPath = indexPath
         selectedCat = healthFilterTypes[indexPath.row]
-        
+        print("selected category \(selectedCat.rawValue)")
+
         let filtered = recipesResults.filter({ ($0.recipe?.healthLabels?.contains(selectedCat.rawValue))! })
-//        self.filteredArray = filtered?.isEmpty ?? false ? recipesResults : filtered
-        self.filteredArray = filtered
-        
-        if selectedCat == .All{
-            let url = APIs.shared.searchRecipesByWords(quary: self.query ?? "")
-            getRecipsByQuery(for: url, showLoading: true)
-        }else{
-            if filteredArray?.isEmpty == true {
-                DispatchQueue.main.async {
-                self.resultsTableView.isHidden = true
-                self.searchForFoodLInitBL.isHidden = false
-                    self.searchForFoodLInitBL.text = "No results for this option"
-                self.noResultPlaceHolderImage.isHidden = false
-                self.noResultPlaceHolderImage.image = #imageLiteral(resourceName: "sad")
-                    
-                }
-            }else{
-                DispatchQueue.main.async {
-                    
-                    self.recipesResults = self.filteredArray ?? []
-                    self.resultsTableView.reloadData()
-                }
-            }
-        }
+//        self.filteredArray = filtered
       
-        print("selected cat \(selectedCat.rawValue)")
-        print("filtered here \(filtered)")
-        print("recipe results after filtring arr \(recipesResults)")
+       
+
+        switch selectedCat{
+        case .All:
+            let url = APIs.shared.searchRecipesByWords(quary: self.query ?? "")
+//            getRecipsByQuery(for: url, showLoading: true)
+            self.isFilterd = false
+//            self.resultsTableView.reloadData()
+            self.checkIfNoResults(recipesResults)
+        case .Low_Sugar:
+            self.isFilterd = true
+//            let url
+            
+            
+            
+//            filteredArray.removeAll()
+//            filteredArray.append(contentsOf: filtered)
+//            self.checkIfNoResults(filteredArray)
+        case .Keto:
+            self.isFilterd = true
+            filteredArray.removeAll()
+            filteredArray.append(contentsOf: filtered)
+            self.checkIfNoResults(filteredArray)
+        case .Vegan:
+            self.isFilterd = true
+            filteredArray.removeAll()
+            filteredArray.append(contentsOf: filtered)
+            self.checkIfNoResults(filteredArray)
+        }
     }
     // set size for each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -262,14 +291,13 @@ extension RecipesSearchVC: UICollectionViewDelegate, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 10 // spacing between cells
     }
+
     
 }
 //MARK:- SearchBar Delegates
 extension RecipesSearchVC: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-    
-        
         if let searchText = searchBar.text{
             guard searchText.isEnglishLetters(searchText) else {
                 self.popAlert(title: "Invalid", message: "Kindly check your search item in english letters only. ")
@@ -290,10 +318,10 @@ extension RecipesSearchVC: UISearchBarDelegate{
     }
 }
 
-//MARK:- Networking
+//MARK: - Networking
 extension RecipesSearchVC{
-    
     func getRecipsByQuery(for url: String, showLoading: Bool) {
+        
         WebServices.getRecipes(vc: self, showLoading: showLoading, url: url) { (data, error) in
             if error == nil && data == nil {
                 print("Connection failed")
@@ -303,7 +331,6 @@ extension RecipesSearchVC{
                 
             } else {
                 DispatchQueue.main.async {
-//                    print("response here is \(data)")
                     self.recipesResults.append(contentsOf: data?.hits ?? [])
                     self.nextPageUrl = data?.links?.next?.href
                     switch self.recipesResults.count{

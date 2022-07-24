@@ -24,7 +24,7 @@ class WebServices {
                         let ParsedResult = try JSONDecoder().decode(SearchRecipeModel?.self,from:(response?.data)!)
                         completionHundler(ParsedResult,nil)
                         print("sucess decoding")
-                        print("Decodede response \(ParsedResult)")
+//                        print("Decodede response \(ParsedResult)")
                     }catch{
                         print("errorrrr catcchhchchchc")
                         print("error decoding")
