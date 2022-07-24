@@ -24,12 +24,14 @@ struct Nips {
     var FilterNip = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
     var CartItemsNip = UINib(nibName: "CartTableViewCell", bundle: nil)
     var ChooseTableNip = UINib(nibName: "ChooseTableViewCell", bundle: nil)
+    var SearchHistoryTableViewCell = UINib(nibName: "SearchHistoryTableViewCell", bundle: nil)
 }
 struct IDs {
     var RecipesResultsTableViewCell = "RecipesResultsTableViewCell"
     var FilterCollectionViewCell = "FilterCollectionViewCell"
     var CartTableViewCell = "CartTableViewCell"
     var ChooseTableViewCell = "ChooseTableViewCell"
+    var SearchHistoryTableViewCell = "SearchHistoryTableViewCell"
 }
 enum HelthLablesTypes: String {
     case All

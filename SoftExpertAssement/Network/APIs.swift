@@ -18,9 +18,6 @@ struct APIs {
     private let sharedAppInfo = "&app_id=\(APIs.appID)&app_key=\(APIs.appKey)"
     private let endPoint = "https://api.edamam.com/api/recipes/v2"
     
-//    var headers: HTTPHeaders? {
-//       return ["Authorization": User.shared.data?.data?.token ?? ""]
-//    }
     func searchRecipesByWords(quary:String) -> String{
         return endPoint + "?type=public&q=\(quary)" + sharedAppInfo
     }
@@ -30,7 +27,5 @@ struct APIs {
     func searchRecipesByHealth(quary: String, health:String)-> String{
         return endPoint + "?type=public&q=\(quary)" + sharedAppInfo + "&health=\(health)"
     }
-   
-    
     
 }

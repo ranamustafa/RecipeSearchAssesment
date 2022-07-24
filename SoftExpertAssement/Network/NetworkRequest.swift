@@ -12,11 +12,9 @@ import Alamofire
 class NetworkManager {
 
     static let shared = NetworkManager()
-
     private init() {}
 
-
-    //MARK: -get all products
+    //MARK: -fetch products
     func fetchAllProducts(url: String, completion: @escaping (_ products: SearchRecipeModel?, _ error: String?) -> Void) {
         AF.request(url, method: .get).responseDecodable(of: SearchRecipeModel.self) { response in
             switch response.result {

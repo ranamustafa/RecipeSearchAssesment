@@ -90,24 +90,26 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dAD-vU-RRj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1Jt-Bz-2he"/>
-                            <constraint firstItem="VpF-0m-Cny" firstAttribute="top" secondItem="91c-X6-H03" secondAttribute="bottom" constant="20" id="9zA-cl-s6J"/>
                             <constraint firstItem="dAD-vU-RRj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HSo-vk-Hg9"/>
                             <constraint firstItem="dAD-vU-RRj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ndb-qZ-MnJ"/>
                             <constraint firstItem="91c-X6-H03" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="T4p-8J-GWz"/>
                             <constraint firstItem="VpF-0m-Cny" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TZD-s1-Dvt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VpF-0m-Cny" secondAttribute="trailing" id="beR-1F-kLO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="91c-X6-H03" secondAttribute="trailing" id="dL3-tA-m4x"/>
+                            <constraint firstItem="VpF-0m-Cny" firstAttribute="top" secondItem="dAD-vU-RRj" secondAttribute="bottom" constant="90" id="oLY-Y8-0VT"/>
                             <constraint firstItem="91c-X6-H03" firstAttribute="top" secondItem="dAD-vU-RRj" secondAttribute="bottom" id="vHn-uD-lRk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VpF-0m-Cny" secondAttribute="bottom" id="xIE-aG-E0V"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Recipes Search" id="Uyr-jD-ntX"/>
                     <connections>
+                        <outlet property="collectionViewHeight" destination="teN-Gg-ROK" id="Alk-UZ-tPL"/>
                         <outlet property="filterCollectionView" destination="91c-X6-H03" id="dD7-nC-Xkf"/>
                         <outlet property="noResultPlaceHolderImage" destination="LbJ-Ag-Q3M" id="YVI-yM-DOF"/>
                         <outlet property="resultsTableView" destination="CMb-gV-Lqs" id="s2q-60-6KB"/>
                         <outlet property="searchBar" destination="dAD-vU-RRj" id="d1d-qA-fOG"/>
                         <outlet property="searchForFoodLInitBL" destination="wFV-jf-RX8" id="eFN-nM-VtJ"/>
+                        <outlet property="tableViewContainetTopConstrain" destination="oLY-Y8-0VT" id="U3f-fL-fl9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

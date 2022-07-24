@@ -25,6 +25,8 @@ class RecipesSearchVC: UIViewController {
     @IBOutlet weak var filterCollectionView: UICollectionView!
     @IBOutlet weak var noResultPlaceHolderImage: UIImageView!
     @IBOutlet weak var searchForFoodLInitBL: UILabel!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var tableViewContainetTopConstrain: NSLayoutConstraint!
     
     //MARK: - Properties
     var query : String?
@@ -43,6 +45,10 @@ class RecipesSearchVC: UIViewController {
     var pageNumber : Int?
     var previusPageNumber : Int?
     var remaining: Int?
+    
+    //MARK: -handle search
+    var isSearching:Bool = false
+    var searchHistory: [String] = []
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -79,6 +85,7 @@ class RecipesSearchVC: UIViewController {
     }
     private func registerTableViewCell(){
         resultsTableView.register(Constants.nips.RecipesResultsNip, forCellReuseIdentifier: Constants.ids.RecipesResultsTableViewCell)
+        resultsTableView.register(Constants.nips.SearchHistoryTableViewCell, forCellReuseIdentifier: Constants.ids.SearchHistoryTableViewCell)
     }
     private func checkIfNoResults(_ array: [Hit]){
         if array.isEmpty{
@@ -94,26 +101,71 @@ class RecipesSearchVC: UIViewController {
             self.resultsTableView.reloadData()
         }
     }
+    private func checkIfSearchBarEditing(isSearch: Bool){
+        if isSearch{
+            //true : in searcBar
+            DispatchQueue.main.async {
+                self.collectionViewHeight.constant = 0
+                self.tableViewContainetTopConstrain.constant = 0
+                self.resultsTableView.reloadData()
+            }
+        }else{
+            DispatchQueue.main.async {
+                self.collectionViewHeight.constant = 70
+                self.tableViewContainetTopConstrain.constant = 90
+                self.resultsTableView.reloadData()
+            }
+        }
+    }
+    private func getSeachHistory(){
+        let history = SearchSavedData.shared.fetchSearchTextArray()
+        self.searchHistory = history
+        self.resultsTableView.reloadData()
+    }
 
 }
 //MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension RecipesSearchVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearching{
+            return searchHistory.count
+        }else{
+            
             return recipesResults.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = resultsTableView.dequeueReusableCell(withIdentifier: Constants.ids.RecipesResultsTableViewCell, for: indexPath) as? RecipesResultsTableViewCell
-        cell?.selectionStyle = .none
-        cell?.configCell(recips: recipesResults[indexPath.row])
-        return cell ?? UITableViewCell()
+        let recipeCell = resultsTableView.dequeueReusableCell(withIdentifier: Constants.ids.RecipesResultsTableViewCell) as! RecipesResultsTableViewCell
+        let searchCell = resultsTableView.dequeueReusableCell(withIdentifier: Constants.ids.SearchHistoryTableViewCell) as! SearchHistoryTableViewCell
+        
+        if isSearching{
+            searchCell.selectionStyle = .none
+            searchCell.searchHistoryTxtLBL.text = self.searchHistory[indexPath.row]
+            return searchCell
+        }else{
+            recipeCell.selectionStyle = .none
+            recipeCell.configCell(recips: recipesResults[indexPath.row])
+            return recipeCell
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = AppStoryboard.Main.viewController(viewControllerClass: RecipesDetailsVC.self)
-        vc.item = self.recipesResults[indexPath.row].recipe
-        self.navigationController?.pushViewController(vc, animated: true)
+        if isSearching{
+            isSearching = false
+            searchBar.text = searchHistory[indexPath.row]
+            self.query = searchHistory[indexPath.row]
+            checkIfSearchBarEditing(isSearch: isSearching)
+            self.recipesResults.removeAll()
+            let url = APIs.shared.searchRecipesByWords(quary: self.query ?? "")
+            getRecipsByQuery(for: url, showLoading: true)
+        }else{
+            let vc = AppStoryboard.Main.viewController(viewControllerClass: RecipesDetailsVC.self)
+            vc.item = self.recipesResults[indexPath.row].recipe
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -169,10 +221,12 @@ extension RecipesSearchVC: UITableViewDataSource, UITableViewDelegate{
 
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-
+        if isSearching{
+            return 30
+        }else{
+            return UITableView.automaticDimension
+        }
     }
-    
 }
 
 //MARK: - UICollectionViewelegate, UICollectionViewDataSource
@@ -256,7 +310,23 @@ extension RecipesSearchVC: UISearchBarDelegate{
             let url = APIs.shared.searchRecipesByWords(quary: q)
             HUD.show(.progress, onView: self.view)
             getRecipsByQuery(for: url, showLoading: true)
+            SearchSavedData.shared.addTextToSearchArrayHistory(textToAdd: self.query ?? "")
+            isSearching = false
+            checkIfSearchBarEditing(isSearch: isSearching)
         }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("start edite in search bar ")
+        self.getSeachHistory()
+        isSearching = true
+        checkIfSearchBarEditing(isSearch: isSearching)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        isSearching = true
+        checkIfSearchBarEditing(isSearch: isSearching)
+        self.getSeachHistory()
     }
 }
 
