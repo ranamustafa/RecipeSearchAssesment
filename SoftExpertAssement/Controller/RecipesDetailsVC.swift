@@ -19,24 +19,29 @@ import SafariServices
 import Kingfisher
 
 class RecipesDetailsVC: UIViewController {
-    //MARK:- Outlets
-    
+    //MARK: - Outlets
     @IBOutlet weak var dishImage: UIImageView!
     @IBOutlet weak var recipeTitleLBL: UILabel!
     @IBOutlet weak var recipeIngrediantsLBL: UILabel!
     
-    //MARK:- Properties
+    //MARK: - Properties
     var item : Recipe?
     var urlToShare: String?
     
-    
-    //MARK:- LifeCycle
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeNavigationBar()
         populateData()
     }
-    func populateData(){
+    
+    //MARK: - IBAction
+    @IBAction func goToRecipeWebSiteBtnPressed(_ sender: UIButton) {
+        showRecipeOnWebsite(self.urlToShare ?? "")
+    }
+    
+    //MARK: - Helper Methods
+    private func populateData(){
         let imageUrl = URL(string: item?.image ?? "")
         dishImage.clipsToBounds = true
         dishImage.kf.indicatorType = .activity
@@ -47,50 +52,34 @@ class RecipesDetailsVC: UIViewController {
         recipeIngrediantsLBL.text = joined
         urlToShare = item?.shareAs
     }
-    func customizeNavigationBar(){
-        // add screen title
+    private func customizeNavigationBar(){
         self.title = "Recipe Details"
-        // add share butn to navigation bar
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareBarButtonItemClicked(_:)))
     }
     
     @objc func shareBarButtonItemClicked(_ sender: UIBarButtonItem) {
-        // Text to share with other apps
         let textToShare = String(describing: "Share the recipe")
-        // URL, and or, and image to share with other apps
         let urlToShare =  self.urlToShare ?? ""
         let items = [textToShare, urlToShare] as [Any]
         let avc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        
-        //Apps to exclude sharing to
         avc.excludedActivityTypes = [
             UIActivity.ActivityType.airDrop,
             UIActivity.ActivityType.print,
             UIActivity.ActivityType.saveToCameraRoll,
             UIActivity.ActivityType.addToReadingList
         ]
-        //If user on iPad
         if UIDevice.current.userInterfaceIdiom == .pad {
             if avc.responds(to: #selector(getter: UIViewController.popoverPresentationController)) {
                 avc.popoverPresentationController?.barButtonItem = sender
             }
         }
-        //Present the shareView on iPhone
         self.present(avc, animated: true, completion: nil)
     }
-    //MARK:- IBAction
-    @IBAction func goToRecipeWebSiteBtnPressed(_ sender: UIButton) {
-        showRecipeOnWebsite(self.urlToShare ?? "")
-    }
     
-    
-    //MARK:- Helper Methods
-    
-    func showRecipeOnWebsite(_ recipeURL: String) {
+    private func showRecipeOnWebsite(_ recipeURL: String) {
         if let url = URL(string: recipeURL) {
             let config = SFSafariViewController.Configuration()
             config.entersReaderIfAvailable = true
-            
             let vc = SFSafariViewController(url: url, configuration: config)
             present(vc, animated: true)
         }
